@@ -2,6 +2,8 @@ package ItemPedido;
 
 import TipoPasta.TipoPasta;
 
+import javax.swing.*;
+
 public class ItemPedido {
     private TipoPasta pasta;
     private double cantidad;
@@ -30,23 +32,12 @@ public class ItemPedido {
         this.cantidad = cantidad;
     }
 
-    public double calcularSubtotal(){
-        switch (pasta) {
-
-            case FIDEOS_AL_HUEVO:
-                return cantidad * 3000;
-
-            case NOQUIS:
-                return cantidad * 3500;
-
-            case RAVIOLES:
-                return cantidad * 5000;
-
-            case AGNOLOTIS:
-                return cantidad * 5500;
-
-            default:
-                return 0;
+    public double calcularSubtotal(float precio){
+        if (precio >= 0.0) {
+            return cantidad * precio;
+        }else {
+            JOptionPane.showInputDialog("ERROR.Precio invalido");
+            return 1;
         }
     }
 }
