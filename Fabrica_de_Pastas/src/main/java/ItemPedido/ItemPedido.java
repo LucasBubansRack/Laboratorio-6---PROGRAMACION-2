@@ -1,26 +1,27 @@
 package ItemPedido;
 
-import TipoPasta.TipoPasta;
+import PedidoInvalido.PedidoInvalidoException;
+import TipoPastaInfo.TipoPastaInfo;
 
 import javax.swing.*;
 
 public class ItemPedido {
-    private TipoPasta pasta;
+    private TipoPastaInfo pasta;
     private double cantidad;
 
     public ItemPedido() {
     }
 
-    public ItemPedido(TipoPasta pasta, double cantidad) {
+    public ItemPedido(TipoPastaInfo pasta, double cantidad) throws PedidoInvalidoException {
         this.pasta = pasta;
         this.cantidad = cantidad;
     }
 
-    public TipoPasta getPasta() {
+    public TipoPastaInfo getPasta() {
         return pasta;
     }
 
-    public void setPasta(TipoPasta pasta) {
+    public void setPasta(TipoPastaInfo pasta) {
         this.pasta = pasta;
     }
 
@@ -32,12 +33,17 @@ public class ItemPedido {
         this.cantidad = cantidad;
     }
 
-    public double calcularSubtotal(float precio){
-        if (precio >= 0.0) {
-            return cantidad * precio;
-        }else {
-            JOptionPane.showInputDialog("ERROR.Precio invalido");
-            return 1;
+    public double calcularSubtotal(){
+        validarCantidad();
+        if (pasta == null){
+            throw new IllegalStateException("Pasta no puede ser nulo");
+        }
+        return cantidad * pasta.getPrecio();
+    }
+
+    public void validarCantidad(){
+        if (cantidad <= 0){
+            throw new IllegalArgumentException("La cantidad debe ser mayor a 0");
         }
     }
 }

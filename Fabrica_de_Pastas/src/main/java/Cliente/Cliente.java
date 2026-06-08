@@ -1,5 +1,7 @@
 package Cliente;
 
+import PedidoInvalido.PedidoInvalidoException;
+
 public class Cliente {
 
     private String nombre;
@@ -11,12 +13,15 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(String nombre, String direccion, String telefono, String mail, String apellido) {
+    public Cliente(String nombre, String direccion, String telefono, String mail, String apellido)
+        throws PedidoInvalidoException {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
         this.mail = mail;
         this.apellido = apellido;
+
+        validarDatos();
     }
 
     public String getNombre() {
@@ -60,6 +65,15 @@ public class Cliente {
     }
 
     public void validarDatos(){
-
+        if (nombre == null || nombre.trim().isEmpty()){
+            throw new IllegalArgumentException("El nombre no puede estar vacío");
+        } else if (nombre.matches(".*\\d.*")) {
+            throw new IllegalArgumentException("El nombre no puede contener números");
+        }
+        if (apellido == null || apellido.trim().isEmpty()){
+            throw new IllegalArgumentException("El apellido no puede estar vacío");
+        } else if (apellido.matches(".*\\d.*")) {
+            throw new IllegalArgumentException("El apellido no puede contener números");
+        }
     }
 }
