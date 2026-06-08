@@ -54,7 +54,7 @@ public class Pedido {
         this.items.add(item);
     }
 
-    public double calcularTotal(){
+    public double calcularTotal() throws PedidoInvalidoException {
         double total = 0.0;
         if (items != null){
             for (ItemPedido item : items){
