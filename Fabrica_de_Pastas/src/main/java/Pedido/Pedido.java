@@ -74,12 +74,12 @@ public class Pedido {
         System.out.println("Teléfono: " + cliente.getTelefono());
         System.out.println("Dirección: " + cliente.getDireccion());
         System.out.println("Medio de venta: " + medio);
-        System.out.println("Items:");
+        System.out.println("Items: ");
         for (ItemPedido item : items) {
-            System.out.println("- " + item.getPasta().getTipo()
-                    + " | cantidad=" + item.getCantidad()
-                    + " | precio=" + item.getPasta().getPrecio()
-                    + " | subtotal=" + item.calcularSubtotal());
+            System.out.println(" - " + item.getPasta().getTipo()
+                    + " | cantidad = " + item.getCantidad()
+                    + " | precio = " + item.getPasta().getPrecio()
+                    + " | subtotal = " + item.calcularSubtotal());
         }
         System.out.println("TOTAL: " + total);
         System.out.println("==========================");

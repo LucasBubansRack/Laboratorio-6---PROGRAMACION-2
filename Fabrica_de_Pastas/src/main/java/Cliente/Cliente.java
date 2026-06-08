@@ -1,7 +1,5 @@
 package Cliente;
 
-import PedidoInvalido.PedidoInvalidoException;
-
 public class Cliente {
 
     private String nombre;
@@ -13,13 +11,12 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(String nombre, String direccion, String telefono, String mail, String apellido)
-        throws PedidoInvalidoException {
+    public Cliente(String nombre, String apellido, String mail, String telefono, String direccion) {
         this.nombre = nombre;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.mail = mail;
         this.apellido = apellido;
+        this.mail = mail;
+        this.telefono = telefono;
+        this.direccion = direccion;
 
         validarDatos();
     }
