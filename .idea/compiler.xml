@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Fabrica_de_Pastas" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="colecciones_y_archivos" target="26" />
+      <module name="Fabrica_de_Pastas" target="26" />
+    </bytecodeTargetLevel>
   </component>
 </project>
